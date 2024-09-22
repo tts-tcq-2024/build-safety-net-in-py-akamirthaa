@@ -9,16 +9,31 @@ def get_soundex_code(c):
     }
     return mapping.get(c.upper(),'0')  # Default to '0' for non-mapped characters
 
-def generate_soundex(name):
-    if not name:
+def check_format(name):
+    if name == "":
         return ""
+    
+    if name.isnumeric():
+        return ""
+   
+
+def generate_soundex(name):
     # Start with the first letter (capitalized).
     soundex = name[0].upper()
     for letter in name[1:]:
         code_for_letter = get_soundex_code(letter)
         if code_for_letter != '0' and code_for_letter != soundex[:-1]:
             soundex += code_for_letter
-    soundex = soundex[:4]
-    soundex = soundex.ljust(4, '0')
+    
     # Pad with zeros if necessary
+    return four_characters(soundex)
+
+def four_characters(soundex):
+    soundex = soundex[:4]
+    return add_zeros(soundex)
+
+def add_zeros(soundex):
+    soundex = soundex.ljust(4, '0')
     return soundex
+
+print(generate_soundex("tchebycheff"))
