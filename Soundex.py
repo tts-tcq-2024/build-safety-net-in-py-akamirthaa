@@ -9,40 +9,45 @@ def get_soundex_code(c):
     }
     return mapping.get(c.upper(),'0')  # Default to '0' for non-mapped characters
 
-def check_format(name):
-    if name == "":
-        return ""
-    if name.isnumeric():
-        return ""
-    return get_first_letter(name)
     
+# Start with the first letter (capitalized).
 def get_first_letter(name):
     soundex = name[0].upper()
-    return drop_letters(name, soundex)
+    return (soundex)
 
-def drop_letters(name, soundex):
+# Drop all occurrences of a, e, i, o, u, y, h, w
+def drop_letters(name):
     list_of_letters_to_drop = ['a', 'e', 'i', 'o', 'u', 'y', 'h', 'w']
     for letter_to_drop in name[1:]:
         if letter_to_drop in list_of_letters_to_drop:
             name = name.replace(letter_to_drop,"")
-    return generate_soundex(name, soundex)
+    return name
 
-def generate_soundex(name, soundex):
-    # Start with the first letter (capitalized).
+
+def initial_soundex(name, soundex):
     for letter in name[1:]:
         code_for_letter = get_soundex_code(letter)
         if code_for_letter != soundex[:-1]:
             soundex += code_for_letter
-    
-    # Pad with zeros if necessary
-    return four_characters(soundex)
+    return soundex
 
 def four_characters(soundex):
     soundex = soundex[:4]
-    return add_zeros(soundex)
+    return soundex
 
+# Pad with zeros if necessary
 def add_zeros(soundex):
     soundex = soundex.ljust(4, '0')
     return soundex
 
-print(check_format("tchebycheff"))
+def generate_final_soundex(name):
+    if name == "":
+        return ""
+    if name.isnumeric():
+        return ""
+    first_letter = get_first_letter(name)
+    name_after_dropping_letters = drop_letters(name)
+    initial_soundex_code = initial_soundex(name_after_dropping_letters, first_letter)
+    four_char_soundex_code = four_characters (initial_soundex_code)
+    zero_added_soundex_code = add_zeros(four_char_soundex_code)
+    return zero_added_soundex_code
