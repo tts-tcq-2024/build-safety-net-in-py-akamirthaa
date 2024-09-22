@@ -15,7 +15,7 @@ def generate_soundex(name):
     if not name:
         return ""
 
-    # Start with the first letter (capitalized)
+    # Start with the first letter (capitalized).
     soundex = name[0].upper()
     prev_code = get_soundex_code(soundex)
 
