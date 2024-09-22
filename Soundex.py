@@ -7,27 +7,18 @@ def get_soundex_code(c):
         'M': '5', 'N': '5',
         'R': '6'
     }
-    return mapping.get(c.upper(), '0')  # Default to '0' for non-mapped characters
-
-def check_for_empty_str(name):
-    if not name:
-        return ""
-    
-    generate_soundex(name)
+    return mapping.get(c.upper(),'0')  # Default to '0' for non-mapped characters
 
 def generate_soundex(name):
-
+    if not name:
+        return ""
     # Start with the first letter (capitalized).
     soundex = name[0].upper()
-
-    for char in name[1:]:
-        code = get_soundex_code(char)
-        if code != '0' and code != soundex[:-1]:
-            soundex += code
-
+    for letter in name[1:]:
+        code_for_letter = get_soundex_code(letter)
+        if code_for_letter != '0' and code_for_letter != soundex[:-1]:
+            soundex += code_for_letter
     soundex = soundex[:5]
-
     soundex = soundex.ljust(4, '0')
     # Pad with zeros if necessary
-
     return soundex
