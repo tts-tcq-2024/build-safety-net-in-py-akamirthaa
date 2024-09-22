@@ -18,7 +18,7 @@ def generate_soundex(name):
         code_for_letter = get_soundex_code(letter)
         if code_for_letter != '0' and code_for_letter != soundex[:-1]:
             soundex += code_for_letter
-    soundex = soundex[:5]
+    soundex = soundex[:4]
     soundex = soundex.ljust(4, '0')
     # Pad with zeros if necessary
     return soundex
