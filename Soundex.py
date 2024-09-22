@@ -9,12 +9,11 @@ def get_soundex_code(c):
     }
     return mapping.get(c.upper(), '0')  # Default to '0' for non-mapped characters
 
-
-def check_for_empty_str(name):
-    return "" if not name else generate_soundex(name)
-
 def generate_soundex(name):
 
+    if not name:
+        return ""
+    
     # Start with the first letter (capitalized).
     soundex = name[0].upper()
 
@@ -25,7 +24,8 @@ def generate_soundex(name):
 
     soundex = soundex[:5]
 
-    # Pad with zeros if necessary
     soundex = soundex.ljust(4, '0')
+    # Pad with zeros if necessary
+        
 
     return soundex
