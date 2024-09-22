@@ -27,7 +27,7 @@ def drop_letters(name):
 def initial_soundex(name, soundex):
     for letter in name[1:]:
         code_for_letter = get_soundex_code(letter)
-        if code_for_letter != 0 and code_for_letter != soundex[:-1]:
+        if code_for_letter != soundex[:-1]:
             soundex += code_for_letter
     return soundex
 
