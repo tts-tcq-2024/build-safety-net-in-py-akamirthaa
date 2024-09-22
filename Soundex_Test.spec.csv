@@ -1,0 +1,19 @@
+﻿Test case id,Test Case Name,Test Case Description ,Input,Output
+Test_1,Test string format,Test the format of input string. Test if the string is empty and only numerics,"""""",No Characters found
+,,,1234,No Characters found
+Test_2,Capitalize first letter,First letter of the name is retained and capitalized,tchebycheff,T212
+Test_3,Drop vowels,"drop all other occurrences of a, e, i, o, u, y, h, w",Alexa,A420
+,,,Ryleigh,R420
+Test_4,Replace consonants ,"Replace consonants with digits as follows (after the first letter)
+b, f, p, v → 1
+c, g, j, k, q, s, x, z → 2
+d, t → 3
+l → 4
+m, n → 5
+r → 6",Volkswagen ,V422
+Test_5,Replace adjacent same digits,"If two or more letters with the same number are adjacent in the original name, only retain the first letter",Hermann,H655
+Test_6,First Letter and three numbers,"If there are four or more numbers, retain only the first three with first letter",Christopher,C623
+Test_7,Add zeros to assign three numbers,"If there are too few letters in the word to assign three numbers, append zeros until there are three numbers",AK,A200
+,,,Amirthaa,A563
+Test_8,Test Similar words,Similar sounding words have same code ,Robert,R163
+,,,Rupert,R163
