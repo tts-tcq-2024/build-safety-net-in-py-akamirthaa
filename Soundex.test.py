@@ -12,6 +12,10 @@ class TestSoundex(unittest.TestCase):
     def test_repeating_character(self):
         self.assertEqual(generate_soundex("Hermann"),"H655")
 
+    def test_lowercase(self):
+        self.assertEqual(generate_soundex("a"),"A000")
+
+    
     
 if __name__ == '__main__':
     unittest.main()
