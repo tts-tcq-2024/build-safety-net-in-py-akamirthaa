@@ -22,8 +22,8 @@ def generate_soundex(name):
         code = get_soundex_code(char)
         if code != '0' and code != soundex[:-1]:
             soundex += code
-        if len(soundex) == 4:
-            break
+
+    soundex = soundex[:5]
 
     # Pad with zeros if necessary
     soundex = soundex.ljust(4, '0')
