@@ -15,7 +15,8 @@ class TestSoundex(unittest.TestCase):
     def test_lowercase(self):
         self.assertEqual(generate_soundex("a"),"A000")
 
-    
+    def test_numbers(self):
+        self.assertEqual(generate_soundex("James123"), "J520")
     
 if __name__ == '__main__':
     unittest.main()
