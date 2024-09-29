@@ -13,8 +13,7 @@ def get_soundex_code(c):
 def check_format(name):
     if not name:
         return ""
-    else:
-        generate_soundex(name)
+    generate_soundex(name)
 
 def generate_soundex(name):
     # Start with the first letter (capitalized)
