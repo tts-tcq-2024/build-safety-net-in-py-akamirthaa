@@ -9,9 +9,14 @@ def get_soundex_code(c):
         'R': '6'
     }
     return mapping.get(c, '0')  # Default to '0' for non-mapped characters
-def generate_soundex(name):
+
+def check_format(name):
     if not name:
         return ""
+    else:
+        generate_soundex(name)
+
+def generate_soundex(name):
     # Start with the first letter (capitalized)
     soundex = name[0].upper()
     for letter in name[1:]:
