@@ -15,7 +15,7 @@ def check_format(name):
         return ""
     generate_soundex(name)
 
-def check_code(code_for_letter):
+def check_code(code_for_letter,soundex):
     return code_for_letter !=0 and code_for_letter != soundex[-1]
 
 def generate_soundex(name):
@@ -23,7 +23,7 @@ def generate_soundex(name):
     soundex = name[0].upper()
     for letter in name[1:]:
         code_for_letter = get_soundex_code(letter)
-        if check_code(code_for_letter):
+        if check_code(code_for_letter,soundex):
             soundex += code_for_letter
     return add_zeros(soundex[:4])
     
