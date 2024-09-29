@@ -18,12 +18,15 @@ def check_format(name):
 def check_if_zero(code):
     return code !=0
 
+def check_if_prev_code(soundex, code):
+    return code != soundex[-1]
+
 def generate_soundex(name):
     # Start with the first letter (capitalized)
     soundex = name[0].upper()
     for letter in name[1:]:
         code_for_letter = get_soundex_code(letter)
-        if check_if_zero(code_for_letter) and code_for_letter != soundex[-1]:
+        if check_if_zero(code_for_letter) and check_if_prev_code(soundex, code_for_letter):
             soundex += code_for_letter
     return add_zeros(soundex[:4])
     
