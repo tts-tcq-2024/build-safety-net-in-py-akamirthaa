@@ -1,3 +1,5 @@
+
+
 def get_soundex_code(c):
     c = c.upper()
     mapping = {
@@ -6,28 +8,35 @@ def get_soundex_code(c):
         'D': '3', 'T': '3',
         'L': '4',
         'M': '5', 'N': '5',
-        'R': '6'
+        'R': '6',
+        "A": "8", "E": "8", "I": "8", "O": "8", "U": "8"
     }
     return mapping.get(c, '0')  # Default to '0' for non-mapped characters
 
 def check_format(name):
     if not name:
         return ""
-    generate_soundex(name)
+    return generate_soundex(name)
 
-def check_code(code_for_letter,soundex):
-    return code_for_letter !=0 and code_for_letter != soundex[-1]
+def check_code(code,prev_code):
+    if code == '8':
+        return True,""
+    return code !='0' and code != prev_code, code
 
 def generate_soundex(name):
     # Start with the first letter (capitalized)
     soundex = name[0].upper()
-    for letter in name[1:]:
-        code_for_letter = get_soundex_code(letter)
-        if check_code(code_for_letter,soundex):
-            soundex += code_for_letter
-    return add_zeros(soundex[:4])
+    prev_code = get_soundex_code(soundex)
+    for char in name[1:]:
+        code = get_soundex_code(char)
+        returned_values = check_code(code,prev_code)
+        if returned_values[0]:
+            soundex += returned_values[1]
+            prev_code = code
+    return add_zeros(soundex)
     
 def add_zeros(soundex):
+    soundex = soundex[:4]
     # Pad with zeros if necessary
     soundex = soundex.ljust(4, '0')
     return soundex
