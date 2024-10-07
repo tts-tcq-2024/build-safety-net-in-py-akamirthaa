@@ -1,0 +1,12 @@
+﻿Test case id,Test Case Name,Test Case Description ,Input,Output
+Test_1,Test string format,Test the format of input string. Test if the string is empty and only numerics,"""""",""""""
+,,,,
+Test_2,Test Similar words,Similar sounding words have same code ,Robert,R163
+,,,Rupert,R163
+,,,,
+Test_3,Add zeros to assign three numbers,"If there are too few letters in the word to assign three numbers, append zeros until there are three numbers",AK,A200
+,,,Dever,D160
+,,,,
+Test_4,Replace adjacent same digits,"If two or more letters with the same number are adjacent in the original name, only retain the first letter",Lloyd,L300
+,,,Gutierrez,G362
+,,,,
